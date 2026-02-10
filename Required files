@@ -1,3 +1,9 @@
-project-folder/
-│── app.py
-│── requirements.txt
+typhoid-diagnosis-system/
+│
+├── app.py
+├── requirements.txt
+├── templates/
+│   ├── index.html
+│   └── result.html
+└── static/
+    └── style.css

@@ -2,28 +2,27 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/diagnose', methods=['POST'])
 def diagnose():
-    if request.method == "POST":
-        score = 0
+    fever = request.form.get('fever')
+    abdominal_pain = request.form.get('abdominal_pain')
+    bleeding = request.form.get('bleeding')
 
-        if request.form.get("fever") == "yes":
-            score += 3
-        if request.form.get("headache") == "yes":
-            score += 2
-        if request.form.get("abdominal_pain") == "yes":
-            score += 2
-        if request.form.get("diarrhea") == "yes":
-            score += 2
+    if bleeding == "yes":
+        level = "Severe Typhoid"
+        treatment = "Hospital admission, IV antibiotics (e.g. Ceftriaxone)."
+    elif abdominal_pain == "yes":
+        level = "Moderate Typhoid"
+        treatment = "Oral antibiotics, hydration, medical supervision."
+    else:
+        level = "Mild Typhoid"
+        treatment = "Early antibiotics, rest, fluids."
 
-        if score >= 6:
-            result = "Probable Typhoid Fever"
-        else:
-            result = "Typhoid unlikely"
+    return render_template('result.html', level=level, treatment=treatment)
 
-        return render_template("result.html", result=result)
-
-    return render_template("diagnosis.html")
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)

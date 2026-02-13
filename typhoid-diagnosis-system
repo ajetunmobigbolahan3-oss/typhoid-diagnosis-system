@@ -1,7 +1,14 @@
 typhoid-diagnosis-system/
 │
-├── app.py
+├── app/
+│   ├── templates/
+│   │   ├── index.html       # Start page / instructions
+│   │   ├── symptom.html     # Yes/No symptom questions
+│   │   ├── result.html      # Diagnosis & treatment output
+│   │   ├── layout.html      # Base layout
+│   └── main.py              # Flask backend
+│
+├── static/
+│   └── style.css            # Professional CSS
 ├── requirements.txt
-├── templates/
-│     ├── index.html
-│     └── result.html
+└── README.md

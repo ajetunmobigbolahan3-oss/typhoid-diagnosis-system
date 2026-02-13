@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Diagnosis Result</h2>
+<ul>
+    {% for sym, val in responses.items() %}
+        <li>{{ sym }}: {{ val }}</li>
+    {% endfor %}
+</ul>
+<p><strong>Probability of Typhoid Fever:</strong> {{ "%.1f"|format(probability) }}%</p>
+<p><strong>Severity Level:</strong> {{ severity }}</p>
+<p><strong>Treatment Recommendation:</strong> {{ treatment }}</p>
+<a href="{{ url_for('index') }}" class="btn">Start Again</a>
+{% endblock %}

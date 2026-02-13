@@ -1,0 +1,7 @@
+typhoid-diagnosis-system/
+│
+├── app.py
+├── requirements.txt
+├── templates/
+│     ├── index.html
+│     └── result.html
